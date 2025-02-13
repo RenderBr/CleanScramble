@@ -40,8 +40,6 @@ CleanScramble is a lightweight scrambling framework built with SOLID and clean c
 - **CleanScramble.Tests**  
   Contains unit tests (using xUnit) that validate the behavior of the scrambling functionality.
 
-Below is an additional section you can add to your README that explains the use cases for CleanScramble and your motivation for creating it:
-
 ---
 
 ## Use Cases and Motivation
