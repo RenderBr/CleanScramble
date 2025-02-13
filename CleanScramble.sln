@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanScramble", "CleanScramble\CleanScramble.csproj", "{93482074-8B6D-4270-B91F-90F5AD82C304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanScramble.Tests", "CleanScramble.Tests\CleanScramble.Tests.csproj", "{96989D2F-DCB1-495A-844E-67D12E9C91B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93482074-8B6D-4270-B91F-90F5AD82C304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93482074-8B6D-4270-B91F-90F5AD82C304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93482074-8B6D-4270-B91F-90F5AD82C304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93482074-8B6D-4270-B91F-90F5AD82C304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96989D2F-DCB1-495A-844E-67D12E9C91B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96989D2F-DCB1-495A-844E-67D12E9C91B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96989D2F-DCB1-495A-844E-67D12E9C91B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96989D2F-DCB1-495A-844E-67D12E9C91B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
