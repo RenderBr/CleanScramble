@@ -68,8 +68,6 @@ CleanScramble was created with two primary goals in mind:
 
 ---
 
-You can integrate this section into your README to provide visitors with clear insights into what CleanScramble can be used for and the reasoning behind its creation.
-
 ## Getting Started
 
 ### Prerequisites
