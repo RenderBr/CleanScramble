@@ -18,44 +18,30 @@ public class WordScramblerTests(ITestOutputHelper testOutputHelper)
         Assert.Throws<ArgumentNullException>(() => _wordScrambler.Scramble(null));
     }
 
-    [Fact]
-    public void GetScramble_UseEmptyString()
+    [Theory]
+    [InlineData("")]
+    [InlineData("\n")]
+    [InlineData("          ")]
+    public void GetScramble_UseEdgeCases(string input)
     {
-        var request = ScrambleRequestFactory.CreateWordScramble("");
-
-        var result = _wordScrambler.Scramble(request);
-        Assert.Equal(request.ObjectToScramble, result);
-    }
-
-    [Fact]
-    public void GetScramble_UseSpecialCharacter()
-    {
-        var request = ScrambleRequestFactory.CreateWordScramble("\n");
+        var request = ScrambleRequestFactory.CreateWordScramble(input);
 
         var result = _wordScrambler.Scramble(request);
         testOutputHelper.WriteLine("Scramble Result: " + result);
         Assert.Equal(request.ObjectToScramble, result);
     }
 
-    [Fact]
-    public void GetScramble_UseValidWordWithSpecialCharacter()
+    [Theory]
+    [InlineData("dog\n")]
+    [InlineData("average")]
+    [InlineData("杂志等中区别于图片的")]
+    [InlineData("a e c v")]
+    public void GetScramble_UseValidInputs(string input)
     {
-        var word = "dog\n";
-        var request = ScrambleRequestFactory.CreateWordScramble(word);
+        var request = ScrambleRequestFactory.CreateWordScramble(input);
             
         var result = _wordScrambler.Scramble(request);
         testOutputHelper.WriteLine("Scramble Result: " + result);
-        Assert.True(word != result);
-    }
-
-    [Fact]
-    public void GetScramble_UseValidWord()
-    {
-        var word = "average";
-        var request = ScrambleRequestFactory.CreateWordScramble(word);
-
-        var result = _wordScrambler.Scramble(request);
-        testOutputHelper.WriteLine("Scramble Result: " + result);
-        Assert.True(word != result);
+        Assert.True(input != result);
     }
 }
