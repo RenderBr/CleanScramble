@@ -12,7 +12,8 @@ public class WordScramblerTests(ITestOutputHelper testOutputHelper)
     private readonly IAlgorithm<string>[] _algorithms =
     [
         AlgorithmProvider.Instance.BasicWordShuffler,
-        AlgorithmProvider.Instance.CaesarCipher
+        AlgorithmProvider.Instance.CaesarCipher,
+        AlgorithmProvider.Instance.Rot13
     ];
 
     [Fact]
@@ -64,6 +65,7 @@ public class WordScramblerTests(ITestOutputHelper testOutputHelper)
 
     private void OutputResult<T>(IAlgorithm<T> algorithm, string result)
     {
-        testOutputHelper.WriteLine($"Scramble Result {algorithm.GetType().Name}: {result}");
+        testOutputHelper.WriteLine($"{algorithm.GetType().FullName}" +
+                                   $"\n\t| Result: {result}\n");
     }
 }

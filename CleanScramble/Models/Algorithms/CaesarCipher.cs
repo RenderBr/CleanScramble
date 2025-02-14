@@ -1,10 +1,16 @@
 using System.Text;
+using CleanScramble.Models.Settings;
 
 namespace CleanScramble.Models.Algorithms;
 
-public class CaesarCipher : IAlgorithm<string>
+public class CaesarCipher(ICaesarCipherSettings settings) : IAlgorithm<string>
 {
-    private const int CaesarShift = 3;
+    public CaesarCipher() : this(CaesarCipherSettings.FromRotations(3))
+    {
+        
+    }
+    
+    private int CaesarShift => settings.Rotations; 
     private const int AlphabetLength = 26;
 
     public string Execute(string input)
@@ -31,7 +37,7 @@ public class CaesarCipher : IAlgorithm<string>
 
     private static int GetStartingAsciiValue(bool isUpperCase) => isUpperCase ? 'A' : 'a';
 
-    private static char GetShiftedCharacter(int startingAsciiValue, char letter)
+    private char GetShiftedCharacter(int startingAsciiValue, char letter)
     {
         var letterAsciiValue = (int)letter;
         
