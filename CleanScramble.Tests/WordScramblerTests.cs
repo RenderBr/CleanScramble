@@ -1,9 +1,5 @@
-using CleanScramble.Models.Algorithms;
-using CleanScramble.Models.Algorithms.Logic;
 using CleanScramble.Models.Factories;
 using CleanScramble.Models.Helpers;
-using CleanScramble.Models.Requests;
-using CleanScramble.Models.Settings;
 using Xunit.Abstractions;
 
 namespace CleanScramble.Tests;
