@@ -1,36 +1,37 @@
-using CleanScramble.Models.Algorithms;
+using CleanScramble.Models.Requests;
+using CleanScramble.Models.Settings;
 
 namespace CleanScramble.Models.Helpers;
 
-public class WordScrambler(IAlgorithm<string> algorithm, int maxAttempts = 10) : IScrambler<string>
+public class WordScrambler : IScrambler<string>
 {
-    private IAlgorithm<string> Algorithm { get; } = algorithm ?? throw new ArgumentNullException(nameof(algorithm));
-    
-    public string Scramble(string unscrambledWord, bool enforceDifference = true)
+    public string Scramble(ScrambleRequest<string> request)
     {
-        if (unscrambledWord is null)
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(request.ObjectToScramble);
+        ArgumentNullException.ThrowIfNull(request.Settings);
+
+        if (string.IsNullOrWhiteSpace(request.ObjectToScramble) || request.ObjectToScramble.Length < 2)
         {
-            throw new ArgumentNullException(nameof(unscrambledWord));
-        }
-        
-        if (string.IsNullOrWhiteSpace(unscrambledWord) || unscrambledWord.Length < 2)
-        {
-            return unscrambledWord; // This word has no scramble opportunities
+            return request.ObjectToScramble; // This word has no scramble opportunities
         }
 
-        return enforceDifference ? ScrambleAndEnsureDifference(unscrambledWord) : algorithm.Execute(unscrambledWord);
+        return request.Settings.EnforceDifference
+            ? ScrambleAndEnsureDifference(request)
+            : request.Settings.Algorithm.Execute(request.ObjectToScramble);
     }
 
-    private string ScrambleAndEnsureDifference(string unscrambledWord)
+    private string ScrambleAndEnsureDifference(ScrambleRequest<string> request)
     {
-        for (var attempts = 0; attempts < maxAttempts; attempts++)
+        for (var attempts = 0; attempts < request.Settings.MaxAttempts; attempts++)
         {
-            var scrambledWord = Algorithm.Execute(unscrambledWord);
-            if (scrambledWord != unscrambledWord)
+            var scrambledWord = request.Settings.Algorithm.Execute(request.ObjectToScramble);
+            if (scrambledWord != request.ObjectToScramble)
             {
                 return scrambledWord;
             }
         }
-        return unscrambledWord;
+
+        return request.ObjectToScramble;
     }
 }
