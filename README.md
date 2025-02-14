@@ -1,4 +1,3 @@
-Below is the updated README with additional usage examples:
 
 ---
 
