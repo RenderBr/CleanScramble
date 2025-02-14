@@ -6,7 +6,7 @@ Below is the updated README with additional usage examples:
 
 CleanScramble is a lightweight and extensible text scrambling framework built with SOLID and clean code principles. It allows you to transform strings using a variety of scrambling algorithms, ranging from classic ciphers like Caesar and ROT13 to creative techniques like Rail Fence and Binary conversion. The framework is designed for maintainability, flexibility, and ease of testing.
 
-> **Note:** While this README was generated with assistance from an AI tool, the codebase itself was entirely written by the project author.
+> **Note:** While this README was generated with assistance from an AI tool, the codebase itself was entirely written by me, Average! You can probably tell because it's becoming kind of a mess 😅
 
 ---
 
