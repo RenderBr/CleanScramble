@@ -1,11 +1,10 @@
 using CleanScramble.Models.Algorithms.Logic;
-using CleanScramble.Models.Settings;
 
 namespace CleanScramble.Models.Algorithms;
 
 public sealed class AlgorithmProvider : IAlgorithmProvider
 {
-    private static readonly Lazy<AlgorithmProvider> LazyInstance = new Lazy<AlgorithmProvider>(() => new AlgorithmProvider());
+    private static readonly Lazy<AlgorithmProvider> LazyInstance = new(() => new AlgorithmProvider());
 
     public static AlgorithmProvider Instance => LazyInstance.Value;
     

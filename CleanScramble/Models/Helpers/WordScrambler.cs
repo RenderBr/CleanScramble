@@ -1,5 +1,4 @@
 using CleanScramble.Models.Requests;
-using CleanScramble.Models.Settings;
 
 namespace CleanScramble.Models.Helpers;
 
@@ -21,7 +20,7 @@ public class WordScrambler : IScrambler<string>
             : request.Settings.Algorithm.Execute(request.ObjectToScramble);
     }
 
-    private string ScrambleAndEnsureDifference(ScrambleRequest<string> request)
+    private static string ScrambleAndEnsureDifference(ScrambleRequest<string> request)
     {
         for (var attempts = 0; attempts < request.Settings.MaxAttempts; attempts++)
         {
