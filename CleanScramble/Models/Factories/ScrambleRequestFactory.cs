@@ -7,15 +7,21 @@ namespace CleanScramble.Models.Factories;
 
 public static class ScrambleRequestFactory
 {
-    public static ScrambleRequest<string> CreateWordScramble(string objectToScramble)
+    public static TransformRequest<string> CreateWordScramble(string objectToScramble)
     {
-        var defaultSettings = new WordScramblerSettings(new RandomWordShuffler(new Randomizer()));
-        return new ScrambleRequest<string>(objectToScramble, defaultSettings);
+        var defaultSettings = new WordTransformSettings(new RandomWordShuffler(new Randomizer()));
+        return new TransformRequest<string>(objectToScramble, defaultSettings);
     }
 
-    public static ScrambleRequest<string> UseCustomScramblerAlgorithm(string objectToScramble,
+    public static TransformRequest<string> UseCustomScramblerAlgorithm(string objectToScramble,
         IAlgorithm<string> algorithm)
     {
-        return new ScrambleRequest<string>(objectToScramble, new WordScramblerSettings(algorithm));
+        return new TransformRequest<string>(objectToScramble, new WordTransformSettings(algorithm));
+    }
+
+    public static TransformRequest<string> CreateRailFenceCyper(string objectToScramble, int numberOfRails)
+    {
+        return new TransformRequest<string>(objectToScramble,
+            new WordTransformSettings(new RailFenceCipher(RailFenceCipherSettings.FromRails(numberOfRails))));
     }
 }

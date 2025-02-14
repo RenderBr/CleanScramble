@@ -2,7 +2,7 @@ using CleanScramble.Models.Algorithms;
 
 namespace CleanScramble.Models.Settings;
 
-public interface IScramblerSettings<T>
+public interface ITransformSettings<T>
 {
     public IAlgorithm<T> Algorithm { get; }
     public bool EnforceDifference { get; }

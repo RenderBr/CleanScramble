@@ -2,9 +2,9 @@ using CleanScramble.Models.Requests;
 
 namespace CleanScramble.Models.Helpers;
 
-public class WordScrambler : IScrambler<string>
+public class WordScrambler : ITransformer<string>
 {
-    public string Scramble(ScrambleRequest<string> request)
+    public string Transform(TransformRequest<string> request)
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(request.ObjectToScramble);
@@ -20,7 +20,7 @@ public class WordScrambler : IScrambler<string>
             : request.Settings.Algorithm.Execute(request.ObjectToScramble);
     }
 
-    private static string ScrambleAndEnsureDifference(ScrambleRequest<string> request)
+    private static string ScrambleAndEnsureDifference(TransformRequest<string> request)
     {
         for (var attempts = 0; attempts < request.Settings.MaxAttempts; attempts++)
         {
